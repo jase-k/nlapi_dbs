@@ -1,0 +1,101 @@
+<!-- Schema created based off of imbd movie data set: https://developer.imdb.com/non-commercial-datasets/  -->
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Schema for title.akas.tsv -->
+    <changeSet id="1" author="jkraft">
+        <createTable tableName="title_akas">
+            <column name="titleId" type="TEXT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="ordering" type="INT" />
+            <column name="title" type="TEXT" />
+            <column name="region" type="TEXT" />
+            <column name="language" type="TEXT" />
+            <column name="types" type="TEXT[]" />
+            <column name="attributes" type="TEXT[]" />
+            <column name="isOriginalTitle" type="BOOLEAN" />
+        </createTable>
+    </changeSet>
+
+    <!-- Schema for title.basics.tsv -->
+    <changeSet id="2" author="jkraft">
+        <createTable tableName="title_basics">
+            <column name="tconst" type="TEXT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="titleType" type="TEXT" />
+            <column name="primaryTitle" type="TEXT" />
+            <column name="originalTitle" type="TEXT" />
+            <column name="isAdult" type="BOOLEAN" />
+            <column name="startYear" type="INT" />
+            <column name="endYear" type="INT" />
+            <column name="runtimeMinutes" type="INT" />
+            <column name="genres" type="TEXT[]" />
+        </createTable>
+    </changeSet>
+
+    <!-- Schema for title.crew.tsv -->
+    <changeSet id="3" author="jkraft">
+        <createTable tableName="title_crew">
+            <column name="tconst" type="TEXT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="directors" type="TEXT[]" />
+            <column name="writers" type="TEXT[]" />
+        </createTable>
+    </changeSet>
+
+    <!-- Schema for title.episode.tsv -->
+    <changeSet id="4" author="jkraft">
+        <createTable tableName="title_episode">
+            <column name="tconst" type="TEXT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="parentTconst" type="TEXT" />
+            <column name="seasonNumber" type="INT" />
+            <column name="episodeNumber" type="INT" />
+        </createTable>
+    </changeSet>
+
+    <!-- Schema for title.principals.tsv -->
+    <changeSet id="5" author="jkraft">
+        <createTable tableName="title_principals">
+            <column name="tconst" type="TEXT" >
+                <constraints primaryKey="true" />
+            </column>
+            <column name="ordering" type="INT" />
+            <column name="nconst" type="TEXT" />
+            <column name="category" type="TEXT" />
+            <column name="job" type="TEXT" />
+            <column name="characters" type="TEXT" />
+        </createTable>
+    </changeSet>
+
+    <!-- Schema for title.ratings.tsv -->
+    <changeSet id="6" author="jkraft">
+        <createTable tableName="title_ratings">
+            <column name="tconst" type="TEXT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="averageRating" type="FLOAT" />
+            <column name="numVotes" type="INT" />
+        </createTable>
+    </changeSet>
+
+    <!-- Schema for name.basics.tsv -->
+    <changeSet id="7" author="jkraft">
+        <createTable tableName="name_basics">
+            <column name="nconst" type="TEXT">
+                <constraints primaryKey="true" nullable="false" />
+            </column>
+            <column name="primaryName" type="TEXT" />
+            <column name="birthYear" type="INT" />
+            <column name="deathYear" type="INT" />
+            <column name="primaryProfession" type="TEXT[]" />
+            <column name="knownForTitles" type="TEXT[]" />
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
