@@ -1,0 +1,24 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Add foreign key on title_principals nconst to name_basics nconst -->
+    <changeSet id="13" author="jkraft">
+        <addForeignKeyConstraint baseTableName="title_principals"
+                                 baseColumnNames="nconst"
+                                 constraintName="fk_title_principals_nconst"
+                                 referencedTableName="name_basics"
+                                 referencedColumnNames="nconst"/>
+    </changeSet>
+
+    <!-- Add foreign key on title_principals tconst to title_basics tconst -->
+    <changeSet id="14" author="jkraft">
+        <addForeignKeyConstraint baseTableName="title_principals"
+                                 baseColumnNames="tconst"
+                                 constraintName="fk_title_principals_tconst"
+                                 referencedTableName="title_basics"
+                                 referencedColumnNames="tconst"/>
+    </changeSet>
+
+</databaseChangeLog>

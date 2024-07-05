@@ -1,0 +1,20 @@
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <!-- Change tconst column type from TEXT to VARCHAR in title_basics table -->
+    <changeSet id="10" author="jkraft">
+        <modifyDataType tableName="title_basics" columnName="tconst" newDataType="VARCHAR(25)" />
+    </changeSet>
+    <!-- Change nconst column type from TEXT to VARCHAR in name_basics table -->
+    <changeSet id="11" author="jkraft">
+        <modifyDataType tableName="name_basics" columnName="nconst" newDataType="VARCHAR(25)" />
+    </changeSet>
+    <!-- Change nconst and tconst column types from TEXT to VARCHAR(25) in title_principals table -->
+    <changeSet id="12" author="jkraft">
+        <modifyDataType tableName="title_principals" columnName="nconst" newDataType="VARCHAR(25)" />
+        <modifyDataType tableName="title_principals" columnName="tconst" newDataType="VARCHAR(25)" />
+    </changeSet>
+
+</databaseChangeLog>
