@@ -3,6 +3,16 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
+    <!-- Delete rows in title_principals where nconst does not exist in name_basics -->
+    <changeSet id="15" author="jkraft">
+        <sql> DELETE FROM title_principals WHERE nconst NOT IN (SELECT nconst FROM name_basics); </sql>
+    </changeSet>
+
+    <!-- Delete rows in title_principals where tconst does not exist in title_basics -->
+    <changeSet id="16" author="jkraft">
+        <sql> DELETE FROM title_principals WHERE tconst NOT IN (SELECT tconst FROM title_basics); </sql>
+    </changeSet>
+
     <!-- Add foreign key on title_principals nconst to name_basics nconst -->
     <changeSet id="13" author="jkraft">
         <addForeignKeyConstraint baseTableName="title_principals"
